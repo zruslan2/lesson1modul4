@@ -9,66 +9,139 @@ void main()
 	setlocale(LC_ALL, "Rus");
 	unsigned short int nz;
 	int ch1, ch2, k;
+start:
 	cout << "Введите номер задания \n";
 	cin >> nz;
-start:
 	switch (nz)
 	{
 	case 15:
 	{
 		/*15.	Нарисовать равнобедренный треугольник из символов ^.Высоту выбирает пользователь.
 			Например: высота = 5, на экране*/
-		int vys, kol = 1;
+		int vys, shyr=1, t1,t2,fill;
 		cout << "Высота = ";
 		cin >> vys;
-		int i;
-		for (i = 1; i <= vys; i++)
+		cout << "Выберите: 1 - c заливкой; 2 - только контур \n";
+		cin >> fill;
+		if (fill == 1)
 		{
-			
-			k = kol;
-			if (i == 1)
+			int i;
+			for (i = 1; i < vys; i++)
 			{
-				ch1 = (vys / 2)+1;
-				while (kol <= vys)
-				{
-					if (kol == ch1)
-					{
-						cout << "^";
-					}
-					else
-					{
-						cout << " ";
-					}
-					kol++;
-				}
-				cout << endl;
-				kol = 1;
-				ch1 = 1; 
-				ch2 = vys;
+				shyr += 2;
 			}
-			else
+			t1 = shyr / 2 + 1;
+			t2 = t1;
+			for (i = 1; i <= vys; i++)
 			{
-				while (kol <= vys)
+				if (i == 1)
 				{
-					
-					if ((kol == ch1) || (kol == ch2))
+					int a;
+					for (a = 1; a <= shyr; a++)
 					{
-						cout << "^";
-					}
-					else
-					{
-						cout << " ";
+						if (a == t1)
+						{
+							cout << "^";
+						}
+						else
+						{
+							cout << " ";
+						}
 					}
 					cout << endl;
-					kol++;
-					ch1++;
-					ch2--;
 				}
-				kol = 1;
+				else if (i == vys)
+				{
+					int a;
+					for (a = 1; a <= shyr; a++)
+					{
+						cout << "^";
+					}
+					cout << endl;
+				}
+				else
+				{
+					int a;
+					t2++;
+					t1--;
+					for (a = 1; a <= shyr; a++)
+					{
+						// с заливкой
+						if (a >= t1 && a <= t2)
+						{
+							cout << "^";
+						}
+						else
+						{
+							cout << " ";
+						}
+					
+					}
+					cout << endl;
+				}
 			}
 
-		
 		}
+		else
+		{
+			int i;
+			for (i = 1; i < vys; i++)
+			{
+				shyr += 2;
+			}
+			t1 = shyr / 2 + 1;
+			t2 = t1;
+			for (i = 1; i <= vys; i++)
+			{
+				if (i == 1)
+				{
+					int a;
+					for (a = 1; a <= shyr; a++)
+					{
+						if (a == t1)
+						{
+							cout << "^";
+						}
+						else
+						{
+							cout << " ";
+						}
+					}
+					cout << endl;
+				}
+				else if (i == vys)
+				{
+					int a;
+					for (a = 1; a <= shyr; a++)
+					{
+						cout << "^";
+					}
+					cout << endl;
+				}
+				else
+				{
+					int a;
+					t2++;
+					t1--;
+					for (a = 1; a <= shyr; a++)
+					{
+					
+						// только контур
+						if (a == t1 || a == t2)
+						{
+						cout << "^";
+						}
+						else
+						{
+						cout << " ";
+						}
+					}
+					cout << endl;
+				}
+			}
+		}
+		
+
 		goto start;
 	}
 		break;
